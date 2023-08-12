@@ -1,0 +1,35 @@
+sayuran     FreshVegs.com
+
+cabe merah keriting 	30rb/kg
+cabe ijo tewe 		    28/kg
+cabe merah tewe		    35/kg
+rawit hijau 		    35rb/kg
+rawit merah		        40/kg
+bawang putih		    36/kg
+bawang merah		    30/kg
+bawang bombay		    25/kg
+bawang kating		    38/kg
+tomat merah		        10/kg
+tomat hijau sayur	    8/kg
+tomat ceri		        25/kg
+BONCIS 			        14/kg
+WORTEL biasa		    10/kg
+KOL			            8/kg
+KENTANG			        16/kg
+daun bawang		        18/kg
+daun seledri		    30/kg
+kacang panjang		    13/kg
+kacang jogo		        35/kg
+labu siem besar		    2.500/satuan
+labu siem kecil		    10/kg
+wortel impor		    15/kg
+timun biasa		        10/kg
+timun kiuri(jpn)	    25/kg	
+jengkol			        30/kg
+sawi putih		        10/kg
+secim			        8/kg
+brokoli			        25/kg
+kembang kol		        20/kg
+pakcoy			        10/kg
+
+saya ingin jika pembeli ingin membeli ia harus menambah kan ke keranjang dan baru di cekout pembelian nya dan bukan langsung di beli di tempat itu, jadi sama seperti di mini market pelanggan milih barang dan di cekout di kasir sebelum di bayar pelanggan akan di beri tahu harga yang harus di bayar

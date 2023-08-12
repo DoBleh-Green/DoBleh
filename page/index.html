@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <title>FreshVegs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+</head>
+<body>
+    <header class="header">
+        <img src="/image/logo.png" alt="">
+
+        <nav class="navbar">
+            <a href="index.html">home</a>
+            <a href="about us.html">about us</a>
+            <a href="product.html">product</a>
+            <a href="#review">review</a>
+            <a href="#blogs">blogs</a>
+        </nav>
+
+        <div class="icons">
+            
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+            <button onclick="myFunction()" class="fas fa-moon"></button>
+            <div class="fas fa-bars" id="menu-btn"></div>
+
+
+        </div>
+
+        <from class="search-from">
+            <input type="search" id="search-box" placeholder="search here..."></input>
+            <label for="search-box" class="fas fa-search"></label>
+        </from>
+
+        <div class="shopping-cart">
+            <div class="box">
+                <i class="fas fa-trash"></i>
+                <img src="/image/bayam.jpg" alt="">
+                <div class="content">
+                    <h3>Bayam</h3>
+                    <span class="price">$4.99/-</span>
+                    <span class="price">qty : 1</span>
+                </div>
+            </div>  
+
+            <div class="box">
+                <i class="fas fa-trash"></i>
+                <img src="/image/bayam.jpg" alt="">
+                <div class="content">
+                    <h3>Bayam</h3>
+                    <span class="price">$4.99/-</span>
+                    <span class="price">qty : 1</span>
+                </div>
+            </div>  
+
+            <div class="box">
+                <i class="fas fa-trash"></i>
+                <img src="/image/bayam.jpg" alt="">
+                <div class="content">
+                    <h3>Bayam</h3>
+                    <span class="price">$4.99/-</span>
+                    <span class="price">qty : 1</span>
+                </div>
+            </div>  
+
+            <div class="box">
+                <i class="fas fa-trash"></i>
+                <img src="/image/bayam.jpg" alt="">
+                <div class="content">
+                    <h3>Bayam</h3>
+                    <span class="price">$4.99/-</span>
+                    <span class="price">qty : 1</span>
+                </div>
+            </div>  
+
+            <div class="box">
+                <i class="fas fa-trash"></i>
+                <img src="/image/bayam.jpg" alt="">
+                <div class="content">
+                    <h3>Bayam</h3>
+                    <span class="price">$4.99/-</span>
+                    <span class="price">qty : 1</span>
+                </div>
+            </div> 
+            <div class="total"> total : $19.69/- </div>
+            <a href="" class="href btn">checkout</a> 
+        </div>
+
+        <form action="" class="login-form">
+            <h3>Login now</h3>
+            <input type="email" placeholder="enter your email" class="box">
+            <input type="password" placeholder="enter your password" class="box">
+            <p>forget your password <a href="#">click here</a></p>
+            <p>don't have an account <a href="#">create here</a></p>
+            <input type="sumbit" value="login now" class="btn">
+        </form>
+
+    </header>
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Makan segar, tetap sehat</h3>
+            <p>Pola makan sehat dan seimbang penting untuk kesehatan dan kesejahteraan tubuh. Salah satunya adalah memilih makanan segar yang minim pengolahan, seperti buah, sayuran, dan daging tanpa pengawet. Makanan segar yang diolah dengan benar memberikan nutrisi optimal bagi tubuh.</p>
+            <a href="#product.html  " class="btn">Ayo Beli!</a>
+        </div>
+    </section>
+
+
+    <section class="features" id="features">
+        <h1 class="heading" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"><span>our features</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="/image/fitur1-preview (1).png" alt="">
+                <h3>Segar dan Sehat</h3>
+                <p>Setiap sayuran yang kami tawarkan ditanam dan dipetik dengan teliti, memastikan kesegaran dan nilai gizi tertinggi. Setiap gigitan adalah pesta rasa dan kesehatan, membantu Anda menjaga kebugaran dan energi sepanjang hari.</p>
+            </div>
+
+            <div class="box">
+                <img src="/image/fitur3-preview(3).png" alt="">
+                <h3>Pengantaran Aman</h3>
+                <p>Kami mengutamakan keamanan dalam setiap langkah pengantaran. Pesanan Anda dikemas secara hati-hati untuk memastikan tiba dalam keadaan sempurna. Dengan layanan pengiriman andal.</p>
+            </div>
+
+            <div class="box">
+                <img src="/image/fitur2-preview(2).png" alt="">
+                <h3>Beberapa Pembayaran Tersedia</h3>
+                <p>Kami memberikan Anda pilihan beragam metode pembayaran sehingga Anda dapat memilih cara yang paling nyaman bagi Anda. Dari kartu kredit hingga transfer bank, fleksibilitas ini memastikan pengalaman berbelanja yang lancar dan tanpa repot.</p>
+            </div>
+        </div>
+    </section>
+
+    <h1 class="heading" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"><span>The Product</span></h1>
+    <div class="container">
+        <div class="product">
+            <img src="/image/test.jpg" alt="Produk 1">
+            <div class="product-info">
+                <h2 class="product-title">Produk 1</h2>
+                <p class="product-description">Deskripsi produk 1 yang menarik.</p>
+                <p class="product-price">$99.99</p>
+                <div class="add-to-cart">
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="/image/test.jpg" alt="Produk 2">
+            <div class="product-info">
+                <h2 class="product-title">Produk 2</h2>
+                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
+                <p class="product-price">$149.99</p>
+                <div class="add-to-cart">
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="/image/test.jpg" alt="Produk 2">
+            <div class="product-info">
+                <h2 class="product-title">Produk 2</h2>
+                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
+                <p class="product-price">$149.99</p>
+                <div class="add-to-cart">
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="/image/test.jpg" alt="Produk 2">
+            <div class="product-info">
+                <h2 class="product-title">Produk 2</h2>
+                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
+                <p class="product-price">$149.99</p>
+                <div class="add-to-cart">
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="/image/test.jpg" alt="Produk 2">
+            <div class="product-info">
+                <h2 class="product-title">Produk 2</h2>
+                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
+                <p class="product-price">$149.99</p>
+                <div class="add-to-cart">
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="/image/test.jpg" alt="Produk 2">
+            <div class="product-info">
+                <h2 class="product-title">Produk 2</h2>
+                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
+                <p class="product-price">$149.99</p>
+                <div class="add-to-cart">
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+        </div>
+        <!-- Tambahkan produk lainnya di sini -->
+        <h1>Cari produk lainya di tab produk</h1>
+    </div>
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+          <div class="row">
+            <div class="col-md-6">
+            <h3>About Us</h3>
+            <p>Terimakasih telah berkunjung ke website kami, kami melayani semaksimal mungkin dan memberikan produk produk yang terjamin</p>
+        </div>
+            <div class="col-md-6">
+              <h3>Contact</h3>
+              <p>Email: info@example.com</p>
+              <p>Phone: (123) 456-7890</p>
+            </div>
+          </div>
+      </footer>
+      
+
+            <!-- JAVA -->
+      
+            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            <script>
+              AOS.init();
+            </script>
+    <script src="/script/script.js" href></script>
+</body>
+</html>
