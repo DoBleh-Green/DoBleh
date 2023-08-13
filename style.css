@@ -633,7 +633,8 @@ p {
   }
 
   .product {
-    width: 50rem;
+    max-width: 50rem;
+    min-width: 25rem;
   }
 
   .footer .col-md-6:nth-child(2) {
@@ -647,6 +648,10 @@ p {
     font-size: 50%;
   }
 
+  .product {
+    max-width: 50rem;
+  }
+
   .home .content h3 {
     font-size: 2rem;
   }
@@ -655,3 +660,4 @@ p {
     font-size: 1.4rem;
   }
 }
+

@@ -67,6 +67,7 @@ section {
   padding-bottom: 3rem;
   font-size: 4rem;
   color: var(--black);
+  margin-top: 7rem;
 }
 
 .heading span {
@@ -330,36 +331,6 @@ section {
   text-decoration: underline;
 }
 
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: url(/image/baner.png) no-repeat;
-  background-position: center;
-  background-size: cover;
-  padding-top: 10rem;
-  padding-bottom: 10rem;
-}
-
-.home .content {
-  padding: 0 10rem;
-  padding-top: 7rem;
-}
-
-.home .content h3 {
-  color: white;
-  font-size: 3.4rem;
-}
-
-.home .content p {
-  color: white;
-  font-size: 20px;
-}
-
-.home .content a {
-  border: none;
-}
 
 .features .box-container {
   display: grid;
@@ -590,6 +561,12 @@ p {
     cursor: pointer;
   }
 
+  .heading{
+    padding-top: 3rem;
+    max-height: 500px;
+    font-size: small;
+  }
+
   .header .navbar.active {
     right: 2rem;
     transition: 0.4s linear;
@@ -608,21 +585,10 @@ p {
     display: block;
   }
 
-  .home {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-
-  .home .content h3 {
-    font-size: 2.4rem;
-  }
-
-  .home .content p {
-    font-size: 1.6rem;
-  }
 
   .product {
-    width: 50rem;
+    max-width: 50rem;
+    min-width: 25rem;
   }
 
   .footer .col-md-6:nth-child(2) {
@@ -636,11 +602,5 @@ p {
     font-size: 50%;
   }
 
-  .home .content h3 {
-    font-size: 2rem;
-  }
 
-  .home .content p {
-    font-size: 1.4rem;
-  }
 }
