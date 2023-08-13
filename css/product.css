@@ -63,11 +63,11 @@ section {
 
 .heading {
   text-align: center;
+  margin-top: 9rem;
   padding: 2rem 0;
   padding-bottom: 3rem;
-  font-size: 4rem;
+  font-size: 2.3rem;
   color: var(--black);
-  margin-top: 7rem;
 }
 
 .heading span {
@@ -397,6 +397,7 @@ section {
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  max-width: 50rem;
 }
 
 .product:hover{

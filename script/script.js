@@ -1,3 +1,5 @@
+// index.html
+
 document.addEventListener("DOMContentLoaded", () => {
   let searchForm = document.querySelector(".search-from");
   let searchBtn = document.querySelector("#search-btn");
@@ -57,3 +59,34 @@ function toggleButton() {
     btn.classList.add("active");
   }
 }
+
+
+
+
+// product.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// about us.html
+
+
+
+
+
+
+
+
+
+
+// 
