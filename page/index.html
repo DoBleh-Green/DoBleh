@@ -19,7 +19,6 @@
             <a href="index.html">home</a>
             <a href="about us.html">about us</a>
             <a href="product.html">product</a>
-            <a href="#review">review</a>
         </nav>
 
         <div class="icons">
@@ -40,36 +39,16 @@
 
         <div class="shopping-cart">
             <div class="box">
-                <i class="fas fa-trash"></i>
-                <img src="/image/bayam.jpg" alt="">
+                <i></i>
                 <div class="content">
-                    <h3>Bayam</h3>
-                    <span class="price">Rp 2.500</span>
-                    <span class="price">/ikat</span>
+                    <h3></h3>
+                    <span class="price"></span>
+
                 </div>
             </div>  
+ 
 
-            <div class="box">
-                <i class="fas fa-trash"></i>
-                <img src="/image/wortel lokal.jpg" alt="">
-                <div class="content">
-                    <h3>Wortel lokal</h3>
-                    <span class="price">Rp 10.000/</span>
-                    <span class="price">kg</span>
-                </div>
-            </div>  
-
-            <div class="box">
-                <i class="fas fa-trash"></i>
-                <img src="/image/brokoli.jpg" alt="">
-                <div class="content">
-                    <h3>Brokoli</h3>
-                    <span class="price">Rp 25.000/</span>
-                    <span class="price">kg</span>
-                </div>
-            </div>  
-
-            <div class="total"> total : Rp 37.500</div>
+            <div class="total" id="cart-total"> total : Rp 0</div>
             <a href="" class="href btn">checkout</a> 
         </div>
 
@@ -119,68 +98,62 @@
     <h1 class="heading" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"><span>The Product</span></h1>
     <div class="container">
         <div class="product">
-            <img src="/image/test.jpg" alt="Produk 1">
+            <img src="/image/wortel-lokal.jpg" alt="Produk 1">
             <div class="product-info">
-                <h2 class="product-title">Produk 1</h2>
-                <p class="product-description">Deskripsi produk 1 yang menarik.</p>
-                <p class="product-price">$99.99</p>
-                <div class="add-to-cart">
-                    <a href="#" class="btn">add to cart</a>
+                <h2 class="product-title">wortel lokal</h2>
+                <p class="product-price">Rp 10.000 /kg</p>
+                <div onclick="add-to-cart" class="add-to-cart">
+                    <a class="btn" onclick="addToCart('Wortel lokal', 'Rp 10.000/kg')">add to cart</a>
                 </div>
             </div>
         </div>
         <div class="product">
-            <img src="/image/test.jpg" alt="Produk 2">
+            <img src="/image/wortel-impor.jpg" alt="Produk 2">
             <div class="product-info">
-                <h2 class="product-title">Produk 2</h2>
-                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
-                <p class="product-price">$149.99</p>
+                <h2 class="product-title">wortel impor</h2>
+                <p class="product-price">Rp 15.000/kg</p>
                 <div class="add-to-cart">
-                    <a href="#" class="btn">add to cart</a>
+                    <a class="btn" onclick="addToCart('Wortel impor', 'Rp 15.000/kg')">add to cart</a>
                 </div>
             </div>
         </div>
         <div class="product">
-            <img src="/image/test.jpg" alt="Produk 2">
+            <img src="/image/jengkol.jpg" alt="Produk 2">
             <div class="product-info">
-                <h2 class="product-title">Produk 2</h2>
-                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
-                <p class="product-price">$149.99</p>
+                <h2 class="product-title">jengkol</h2>
+                <p class="product-price">Rp 30.000/kg</p>
                 <div class="add-to-cart">
-                    <a href="#" class="btn">add to cart</a>
+                    <a class="btn" onclick="addToCart('jengkol', 'Rp 30.000/kg')">add to cart</a>
                 </div>
             </div>
         </div>
         <div class="product">
-            <img src="/image/test.jpg" alt="Produk 2">
+            <img src="/image/kentang.jpg" alt="Produk 2">
             <div class="product-info">
-                <h2 class="product-title">Produk 2</h2>
-                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
-                <p class="product-price">$149.99</p>
+                <h2 class="product-title">kentang</h2>
+                <p class="product-price">Rp 16.000/kg</p>
                 <div class="add-to-cart">
-                    <a href="#" class="btn">add to cart</a>
+                    <a class="btn" onclick="addToCart('kentang', 'Rp 16.000/kg')">add to cart</a>
                 </div>
             </div>
         </div>
         <div class="product">
-            <img src="/image/test.jpg" alt="Produk 2">
+            <img src="/image/kembang-kol.jpg" alt="Produk 2">
             <div class="product-info">
-                <h2 class="product-title">Produk 2</h2>
-                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
-                <p class="product-price">$149.99</p>
+                <h2 class="product-title">kembang kol</h2>
+                <p class="product-price">Rp 20.000/kg</p>
                 <div class="add-to-cart">
-                    <a href="#" class="btn">add to cart</a>
+                    <a class="btn" onclick="addToCart('Kembang kol', 'Rp 10.000/kg')">add to cart</a>
                 </div>
             </div>
         </div>
         <div class="product">
-            <img src="/image/test.jpg" alt="Produk 2">
+            <img src="/image/brokoli.jpg" alt="Produk 2">
             <div class="product-info">
-                <h2 class="product-title">Produk 2</h2>
-                <p class="product-description">Deskripsi produk 2 yang menarik.</p>
-                <p class="product-price">$149.99</p>
+                <h2 class="product-title">brokoli</h2>
+                <p class="product-price">Rp 8.000/kg</p>
                 <div class="add-to-cart">
-                    <a href="#" class="btn">add to cart</a>
+                    <a class="btn" onclick="addToCart('Brokoli', 'Rp 10.000/kg')">add to cart</a>
                 </div>
             </div>
         </div>
@@ -218,5 +191,6 @@
               AOS.init();
             </script>
     <script src="/script/script.js" href></script>
+    <script src="/script/addTocart.js"></script>
 </body>
 </html>
