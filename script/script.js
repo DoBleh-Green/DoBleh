@@ -1,47 +1,30 @@
+
 // index.html
 
 document.addEventListener("DOMContentLoaded", () => {
-  let searchForm = document.querySelector(".search-from");
-  let searchBtn = document.querySelector("#search-btn");
   let shoppingCart = document.querySelector(".shopping-cart");
   let cartBtn = document.querySelector("#cart-btn");
-  let loginForm = document.querySelector(".login-form");
-  let loginBtn = document.querySelector("#login-btn");
   let navbar = document.querySelector(".navbar");
   let menuBtn = document.querySelector("#menu-btn");
 
-  searchBtn.addEventListener("click", () => {
-    searchForm.classList.toggle("active");
-    shoppingCart.classList.remove("active");
-    loginForm.classList.remove("active");
-    navbar.classList.remove("active");
-  });
 
   cartBtn.addEventListener("click", () => {
     shoppingCart.classList.toggle("active");
-    searchForm.classList.remove("active");
-    loginForm.classList.remove("active");
-    navbar.classList.remove("active");  
+    navbar.classList.remove("active");
   });
 
   loginBtn.addEventListener("click", () => {
     loginForm.classList.toggle("active");
-    searchForm.classList.remove("active");
-    shoppingCart.classList.remove("active");
     navbar.classList.remove("active");
   });
 
   menuBtn.addEventListener("click", () => {
     navbar.classList.toggle("active");
-    searchForm.classList.remove("active");
-    shoppingCart.classList.remove("active");
     loginForm.classList.remove("active");
   });
 
   window.onscroll = () => {
     searchForm.classList.remove("active");
-    shoppingCart.classList.remove("active");
-    loginForm.classList.remove("active");
     navbar.classList.remove("active");
   };
 });
@@ -60,33 +43,36 @@ function toggleButton() {
   }
 }
 
+// Render Product Dynamicly
+
+const products = [
+  {
+    id: 1,
+    nama: "Wortel Lokal",
+    harga: 10000,
+    stock: 100,
+    gambar: "../img/wortel-lokal.jpg",
+    productLink: "product.html?id=1"
+  },
+  {
+    id: 2,
+    nama: "Wortel Import",
+    harga: 10000,
+    stock: 100,
+    gambar: "../img/wortel-impor.jpg",
+    productLink: "product.html?id=2"
+  },
+  {
+    id: 3,
+    nama: "Jengkol",
+    harga: 10000,
+    stock: 100,
+    gambar: "../img/jengkol.jpg",
+    productLink: "product.html?id=3"
+  },
+];
 
 
+document.addEventListener("DOMContentLoaded", () => {
 
-// product.html
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// about us.html
-
-
-
-
-
-
-
-
-
-
-// 
+})

@@ -1,4 +1,4 @@
-const cartItems = [];  // Menyimpan informasi produk dalam keranjang
+const cartItems = []; // Menyimpan informasi produk dalam keranjang
 
 function addToCart(productName, productPrice) {
     const cartContainer = document.querySelector('.shopping-cart');
@@ -24,45 +24,49 @@ function addToCart(productName, productPrice) {
     // Hitung ulang total belanja
     updateTotal();
 
-    // Show an alert when a product is added to the cart
-    alert(`${productName} has been added to your cart.`);
+    // Tampilkan notifikasi ketika produk ditambahkan ke keranjang
+    showNotification(productName);
 }
 
+function showNotification(productName) {
+    // Buat elemen notifikasi
+    const notification = document.createElement('div');
+    notification.classList.add('notification');
+    notification.textContent = `${productName} ditambahkan ke keranjang`;
+
+    // Tambahkan notifikasi ke dalam halaman
+    document.body.appendChild(notification);
+
+    // Hilangkan notifikasi setelah beberapa detik
+    setTimeout(() => {
+        document.body.removeChild(notification);
+    }, 3000); // Notifikasi akan hilang setelah 3 detik
+}
 
 function removeFromCart(element) {
     const productBox = element.parentElement;
     const cartContainer = document.querySelector('.shopping-cart');
-  
+
     // Hapus produk dari tampilan keranjang
     cartContainer.removeChild(productBox);
-  
+
     // Dapatkan indeks produk yang akan dihapus dari struktur data keranjang
     const productIndex = cartItems.findIndex(item => item.name === productBox.querySelector('h3').textContent);
-  
+
     if (productIndex !== -1) {
-      // Hapus produk dari struktur data keranjang
-      cartItems.splice(productIndex, 1);
+        // Hapus produk dari struktur data keranjang
+        cartItems.splice(productIndex, 1);
     }
-  
+
     // Hitung ulang total belanja
     updateTotal();
 }
 
 // Fungsi untuk menghitung total belanja
 function updateTotal() {
-    const prices = document.querySelectorAll('.price');
-    let total = 0;
-
-    prices.forEach(price => {
-        const priceText = price.textContent.trim().replace('Rp ', '').replace(',', '');
-
-        // Parse the price text to a float, and check if it's a valid number
-        const priceValue = parseFloat(priceText);
-        if (!isNaN(priceValue)) {
-            total += priceValue;
-        }
-    });
+    const prices = cartItems.map(item => parseFloat(item.price.replace('Rp ', '')));
+    const total = prices.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
     const totalElement = document.querySelector('.total');
-    totalElement.textContent = `Total: Rp ${total.toLocaleString('en-US')}`;
+    totalElement.textContent = `total : Rp ${total.toLocaleString('id-ID')}`;
 }

@@ -80,6 +80,29 @@ section {
   clip-path: polygon(9% 0, 92% 0, 100% 50%, 93% 100%, 9% 100%, 0% 50%);
 }
 
+input[type="number"] {
+  width: 50px; /* Lebar input field */
+  padding: 5px; /* Ruang dalam input field */
+  border: 1px solid #ccc; /* Garis pinggir input field */
+  border-radius: 4px; /* Sudut membulat */
+  font-size: 16px; /* Ukuran teks */
+}
+
+/* Style saat input field mendapat fokus */
+input[type="number"]:focus {
+  border-color: #007bff; /* Warna garis saat input mendapat fokus */
+  outline: none; /* Menghapus outline default browser */
+  box-shadow: 0 0 5px #007bff; /* Efek bayangan saat mendapat fokus */
+}
+
+input[type="num"] {
+  width: 50px; /* Lebar input field */
+  padding: 5px; /* Ruang dalam input field */
+  border: 1px solid #ccc; /* Garis pinggir input field */
+  border-radius: 4px; /* Sudut membulat */
+  font-size: 16px; /* Ukuran teks */
+}
+
 .btn {
   margin-top: 1rem;
   display: inline-block;
@@ -175,46 +198,6 @@ section {
   display: none;
 }
 
-.header .search-from {
-  position: absolute;
-  top: 110%;
-  right: -110%;
-  width: 50rem;
-  height: 4.5rem;
-  background: #fff;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  box-shadow: var(--box-shadow);
-}
-
-.search-from.active {
-  right: 2rem;
-  transition: 0.2s linear;
-}
-
-.header .search-from input {
-  height: 100%;
-  width: 100%;
-  background: none;
-  text-transform: none;
-  font-size: 1.6rem;
-  color: var(--black);
-  padding: 0 1.5rem;
-}
-
-.header .search-from label {
-  font-size: 2.2rem;
-  padding-right: 1.5rem;
-  color: var(--black);
-  cursor: pointer;
-}
-
-.header .search-from label:hover {
-  color: var(--green);
-}
-
 .header .shopping-cart {
   position: absolute;
   top: 110%;
@@ -284,51 +267,6 @@ section {
   display: block;
   text-align: center;
   margin: 1rem;
-}
-
-.header .login-form {
-  position: absolute;
-  top: 110%;
-  right: -110%;
-  width: 30rem;
-  box-shadow: var(--box-shadow);
-  padding: 2rem;
-  border-radius: 0.5rem;
-  background: #fff;
-  text-align: center;
-}
-
-.login-form.active {
-  right: 2rem;
-  transition: 0.4s linear;
-}
-
-.header .login-form h3 {
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  color: var(--black);
-}
-
-.header .login-form .box {
-  width: 100%;
-  margin: 0.7rem 0;
-  background: #eee;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  font-size: 1.6rem;
-  color: var(--black);
-  text-transform: none;
-}
-
-.header .login-form p {
-  font-size: 1.4rem;
-  padding: 0.5rem 0;
-  color: var(--light-collor);
-}
-
-.header .login-form p a {
-  color: blue;
-  text-decoration: underline;
 }
 
 
@@ -422,8 +360,6 @@ section {
 }
 
 .product-info {
-  flex: 1;
-  justify-content: space-between;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -431,10 +367,12 @@ section {
 
 .product-title {
   font-weight: bold;
+  margin: 0;
 }
 
 .product-price {
   color: #e74c3c;
+  margin: 0;
 }
 
 .add-to-cart {

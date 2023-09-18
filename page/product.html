@@ -1,198 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/product.css" />
     <title>FreshVegs</title>
-    <link rel="icon" type="/image/jpg" href="/image/favicon.ico">
-
-
-</head>
-<body>
+    <link rel="icon" type="/image/jpg" href="/image/favicon.ico" />
+  </head>
+  <body>
     <header class="header">
-        <img src="/image/logo.png" alt="">
+      <img src="/image/logo.png" alt="" />
 
-        <nav class="navbar">
-            <a href="index.html">home</a>
-            <a href="about us.html">about us</a>
-            <a href="product.html">product</a>
-        </nav>
+      <nav class="navbar">
+        <a href="/index.html">home</a>
+        <a href="about us.html">about us</a>
+        <a href="product.html">product</a>
+      </nav>
 
-        <div class="icons">
-            
-            <div class="fas fa-search" id="search-btn"></div>
-            <div class="fas fa-shopping-cart" id="cart-btn"></div>
-            <div class="fas fa-user" id="login-btn"></div>
-            <button onclick="myFunction()" class="fas fa-moon"></button>
-            <div class="fas fa-bars" id="menu-btn"></div>
+      <div class="icons">
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <button onclick="myFunction()" class="fas fa-moon"></button>
+        <div class="fas fa-bars" id="menu-btn"></div>
+      </div>
 
-
+      <div class="shopping-cart">
+        <div class="box">
+          <i></i>
+          <div class="content">
+            <h3></h3>
+            <span class="price"></span>
+          </div>
         </div>
 
-        <from class="search-from">
-            <input type="search" id="search-box" placeholder="search here..."></input>
-            <label for="search-box" class="fas fa-search"></label>
-        </from>
-
-        <div class="shopping-cart">
-            <div class="box">
-                <i></i>
-                <div class="content">
-                    <h3></h3>
-                    <span class="price"></span>
-
-                </div>
-            </div>  
- 
-
-            <div class="total" id="cart-total"> total : Rp 0</div>
-            <a href="" class="href btn">checkout</a> 
-        </div>
-
-
-
-        <form action="" class="login-form">
-            <h3>Login now</h3>
-            <input type="email" placeholder="enter your email" class="box">
-            <input type="password" placeholder="enter your password" class="box">
-            <p>forget your password <a href="#">click here</a></p>
-            <p>don't have an account <a href="#">create here</a></p>
-            <input type="sumbit" value="login now" class="btn">
-        </form>
-
+        <div class="total" id="cart-total">total : Rp 0</div>
+        <a href="/css/product.css" class="href btn">checkout</a>
+      </div>
     </header>
 
-
-    <div class="heading" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
-        <h1><span >The Product</span></h1></div>
-    <div class="container" data-aos="flip-right">
-        <div class="product">
-            <img src="/image/kentang.jpg" alt="Produk 1">
-            <div class="product-info">
-                <h2 class="product-title">Kentang</h2>
-                <p class="product-price">Rp 16.000 /kg</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('kentang', 'Rp 16.000/kg')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="/image/wortel-lokal.jpg" alt="Produk 2">
-            <div class="product-info">
-                <h2 class="product-title">wortel lokal</h2>
-                <p class="product-price">Rp 10.000 /kg</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('wortel lokal', 'Rp 10.000/kg')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="/image/brokoli.jpg" alt="Produk 2">
-            <div class="product-info">
-                <h2 class="product-title">brokoli</h2>
-                <p class="product-price">Rp 25.000</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('brokoli', 'Rp 25.000/kg')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="/image/timun-biasa.jpg" alt="Produk 2">
-            <div class="product-info">
-                <h2 class="product-title">timun biasa</h2>
-                <p class="product-price">Rp 10.000 /kg</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('timun-biasa', 'Rp 10.000/kg')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="/image/kangkung.jpg" alt="Produk 2">
-            <div class="product-info">
-                <h2 class="product-title">kangkung</h2>
-                <p class="product-price">Rp 2.500 /ikat</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('kangkung', 'Rp 2.500/ikat')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="/image/kol.jpg" alt="Produk 2">
-            <div class="product-info">
-                <h2 class="product-title">Kol</h2>
-                <p class="product-price">Rp 10.000 /kg</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('kentang', 'Rp 10.000/kg')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="/image/jengkol.jpg" alt="Produk 2">
-            <div class="product-info">
-                <h2 class="product-title">jengkol</h2>
-                <p class="product-price">Rp 30.000 /kg</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('kentang', 'Rp 30.000/kg')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="/image/caisim.jpg" alt="Produk 2">
-            <div class="product-info">
-                <h2 class="product-title">caicim</h2>
-                <p class="product-price">Rp 8.000 /kg</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('caicim', 'Rp 8.000/kg')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="/image/wortel-impor.jpg" alt="Produk 2">
-            <div class="product-info">
-                <h2 class="product-title">wortel impor</h2>
-                <p class="product-price">Rp 15.000 /kg</p>
-                <div class="add-to-cart">
-                    <a class="btn" onclick="addToCart('wortel impor', 'Rp 15.000/kg')">add to cart</a>
-                </div>
-            </div>
-        </div>
-        <!-- Tambahkan produk lainnya di sini -->
+    <div
+      class="heading"
+      data-aos="fade-left"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+    >
+      <h1><span>The Product</span></h1>
     </div>
 
+    <div class="container" data-aos="flip-right">
+      <div class="product">
+        <img src="/image/kentang.jpg" alt="Produk 4" />
+        <div class="product-info">
+          <h2 class="product-title">Kentang</h2>
+          <p class="product-price">Rp 16.000 /kg</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('kentang', 'Rp 16.000/kg')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
 
-
-
-
-
-
-
+      <div class="product">
+        <img src="/image/brokoli.jpg" alt="Produk 6" />
+        <div class="product-info">
+          <h2 class="product-title">brokoli</h2>
+          <p class="product-price">Rp 25.000</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('brokoli', 'Rp 25.000/kg')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="/image/timun-biasa.jpg" alt="Produk 7" />
+        <div class="product-info">
+          <h2 class="product-title">timun biasa</h2>
+          <p class="product-price">Rp 10.000 /kg</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('timun-biasa', 'Rp 10.000/kg')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="/image/kangkung.jpg" alt="Produk 8" />
+        <div class="product-info">
+          <h2 class="product-title">kangkung</h2>
+          <p class="product-price">Rp 2.500 /ikat</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('kangkung', 'Rp 2.500/ikat')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="/image/kol.jpg" alt="Produk 9" />
+        <div class="product-info">
+          <h2 class="product-title">Kol</h2>
+          <p class="product-price">Rp 10.000 /kg</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('kol', 'Rp 10.000/kg')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="/image/jengkol.jpg" alt="Produk 3" />
+        <div class="product-info">
+          <h2 class="product-title">jengkol</h2>
+          <p class="product-price">Rp 30.000 /kg</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('jengkol', 'Rp 30.000/kg')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="/image/caisim.jpg" alt="Produk 10" />
+        <div class="product-info">
+          <h2 class="product-title">caicim</h2>
+          <p class="product-price">Rp 8.000 /kg</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('caicim', 'Rp 8.000/kg')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="/image/wortel-impor.jpg" alt="Produk 2" />
+        <div class="product-info">
+          <h2 class="product-title">wortel impor</h2>
+          <p class="product-price">Rp 15.000 /kg</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('wortel impor', 'Rp 15.000/kg')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="/image/kembang-kol.jpg" alt="Produk 5" />
+        <div class="product-info">
+          <h2 class="product-title">kembang kol</h2>
+          <p class="product-price">Rp 20.000/kg</p>
+          <div class="add-to-cart">
+            <a class="btn" onclick="addToCart('Kembang kol', 'Rp 20000/kg')"
+              >add to cart</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Tambahkan produk lainnya di sini -->
+    </div>
 
     <footer class="footer">
-          <div class="row">
-            <div class="col-md-6">
-            <h3>About Us</h3>
-            <p>Terimakasih telah berkunjung ke website kami, kami melayani semaksimal mungkin dan memberikan produk produk yang terjamin</p>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>About Us</h3>
+          <p>
+            Terimakasih telah berkunjung ke website kami, kami melayani
+            semaksimal mungkin dan memberikan produk produk yang terjamin
+          </p>
         </div>
-            <div class="col-md-6">
-              <h3>Contact</h3>
-              <p>Email: info@example.com</p>
-              <p>Phone: (123) 456-7890</p>
-            </div>
-          </div>
-      </footer>
-      
+        <div class="col-md-6">
+          <h3>Contact</h3>
+          <p>Email: VegsF@gmail.com</p>
+          <p>Phone: (012)312-334-43</p>
+        </div>
+      </div>
+    </footer>
 
+    <!-- JAVA -->
 
-            <!-- JAVA -->
-      
-            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-            <script>
-              AOS.init();
-            </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <script src="/script/addTocart.js"></script>
     <script src="/script/script.js" href></script>
-</body>
+  </body>
 </html>
