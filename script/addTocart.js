@@ -1,39 +1,33 @@
-// Fungsi untuk menambahkan produk ke keranjang
-function addToCart(event) {
-  const product = event.target.parentElement.parentElement;
-  const productName = product.querySelector(".product-title").innerText;
-  const productPrice = parseFloat(
-    product.querySelector(".product-price").innerText
-  );
+// addTocart.js
 
-  // Kirim request ke server menggunakan AJAX
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "addToCart.php", true); // Ganti 'addToCart.php' dengan lokasi file PHP yang menangani penambahan ke keranjang
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      // Tampilkan notifikasi jika berhasil ditambahkan ke keranjang
-      document.getElementById("notification").style.display = "block";
-      setTimeout(function () {
-        document.getElementById("notification").style.display = "none";
-      }, 3000); // Notifikasi akan hilang setelah 3 detik
-    } else {
-      // Handle jika terjadi kesalahan saat menambahkan ke keranjang
-      console.error("Terjadi kesalahan saat menambahkan ke keranjang.");
-    }
-  };
+document.addEventListener("DOMContentLoaded", function () {
+  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
 
-  // Kirim data produk yang akan ditambahkan ke keranjang
-  const data =
-    "productName=" +
-    encodeURIComponent(productName) +
-    "&productPrice=" +
-    encodeURIComponent(productPrice);
-  xhr.send(data);
-}
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const productId = this.getAttribute("data-id");
 
-// Tambahkan event listener ke setiap tombol "Add to Cart"
-const addToCartButtons = document.querySelectorAll(".add-to-cart .btn");
-addToCartButtons.forEach((button) => {
-  button.addEventListener("click", addToCart);
+      // Kirim request AJAX untuk menambahkan produk ke keranjang (Anda membutuhkan PHP backend untuk menangani ini)
+      // Contoh request menggunakan Fetch API
+      fetch("add_to_cart.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: "id_sayuran=" + productId,
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Tampilkan notifikasi jika produk berhasil ditambahkan
+            document.getElementById("notification").style.display = "block";
+            setTimeout(function () {
+              document.getElementById("notification").style.display = "none";
+            }, 3000); // Atur notifikasi hilang setelah 3 detik
+          } else {
+            console.log("Gagal menambahkan produk ke keranjang.");
+          }
+        })
+        .catch((error) => console.error("Error:", error));
+    });
+  });
 });

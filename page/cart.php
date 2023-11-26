@@ -1,122 +1,94 @@
 <?php
-session_start(); // Mulai sesi PHP
-require '../koneksi.php';
+session_start();
+include '../koneksi.php';
 
-if (!isset($_SESSION['cart'])) {
-  $_SESSION['cart'] = array(); // Inisialisasi keranjang belanja jika belum ada
-}
+// Periksa apakah pengguna sudah login dan ada informasi id_user dalam sesi
+if (isset($_SESSION['id_user'])) {
+  $id_user = $_SESSION['id_user'];
 
-// Fungsi untuk menambahkan item ke keranjang belanja
-function addToCart($id_sayuran, $nama_sayuran, $harga_sayuran)
-{
-  $item = array(
-    'id_sayuran' => $id_sayuran,
-    'nama_sayuran' => $nama_sayuran,
-    'harga_sayuran' => $harga_sayuran,
-    'satuan' => 1
-  );
-
-  // Periksa apakah produk sudah ada di keranjang
-  foreach ($_SESSION['cart'] as &$cartItem) {
-    if ($cartItem['id_sayuran'] === $id_sayuran) {
-      $cartItem['satuan']++;
-      return;
-    }
-  }
-
-  // Jika produk belum ada di keranjang, tambahkan ke keranjang
-  $_SESSION['cart'][] = $item;
-}
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Cart - FreshVegs</title>
-  <!-- Tambahkan stylesheet atau style yang diperlukan -->
-</head>
-
-<body>
-  <header class="header">
-    <!-- Tambahkan header sesuai dengan desain Anda -->
-  </header>
-
-  <div class="cart-page">
-    <table>
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="cart-items">
-        <?php
-        $total = 0;
-        foreach ($_SESSION['cart'] as $item) {
-          $subtotal = $item['harga_sayuran'] * $item['satuan'];
-          $total += $subtotal;
-          ?>
-          <tr>
-            <td>
-              <?php echo $item['nama_sayuran']; ?>
-            </td>
-            <td>
-              <?php echo $item['satuan']; ?>
-            </td>
-            <td>
-              <?php echo 'Rp ' . number_format($item['harga_sayuran'], 0, ',', '.'); ?>
-            </td>
-            <td>
-              <?php echo 'Rp ' . number_format($subtotal, 0, ',', '.'); ?>
-            </td>
-            <td>
-              <!-- Tombol untuk menghapus item dari keranjang -->
-              <form method="post">
-                <input type="hidden" name="remove_item" value="<?php echo $item['id_sayuran']; ?>">
-                <button type="submit">Remove</button>
-              </form>
-            </td>
-          </tr>
-        <?php } ?>
-      </tbody>
-    </table>
-
-    <div class="total">
-      <h4>Total: <span>
-          <?php echo 'Rp ' . number_format($total, 0, ',', '.'); ?>
-        </span></h4>
-      <a href="CheckOut.php" class="btn">Checkout</a>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <!-- Tambahkan bagian footer jika diperlukan -->
-  </footer>
-
-  <!-- Javascript -->
-  <!-- Tambahkan script yang diperlukan -->
-
-  <?php
-  // Hapus item dari keranjang jika tombol "Remove" diklik
-  if (isset($_POST['remove_item'])) {
-    $remove_id = $_POST['remove_item'];
-    foreach ($_SESSION['cart'] as $key => $item) {
-      if ($item['id_sayuran'] === $remove_id) {
-        unset($_SESSION['cart'][$key]);
-        break;
-      }
-    }
-    // Perbarui halaman setelah menghapus item
-    echo "<meta http-equiv='refresh' content='0'>";
-  }
+  // Query untuk mengambil data keranjang belanja berdasarkan id_user yang sedang login
+  $sql = "SELECT id_cart, id_sayuran, id_user, qty FROM cart_user WHERE id_user = $id_user";
+  $query = mysqli_query($conn, $sql);
   ?>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/cart.css">
+  </head>
+
+  <body>
+
+
+    <?php
+    // Periksa apakah ada baris yang dikembalikan oleh query
+    if (mysqli_num_rows($query) > 0) {
+      // Buat array untuk menampung data keranjang belanja
+      $keranjang = array();
+
+      // Mulai iterasi data yang dikembalikan oleh query
+      while ($row = mysqli_fetch_assoc($query)) {
+        // Ambil informasi mengenai sayuran berdasarkan id_sayuran
+        $sql_sayuran = "SELECT id_sayuran, nama_sayuran, harga_sayuran FROM sayuran WHERE id_sayuran = $row[id_sayuran]";
+        $query_sayuran = mysqli_query($conn, $sql_sayuran);
+        $data_sayuran = mysqli_fetch_assoc($query_sayuran);
+
+        // Masukkan informasi sayuran dan jumlah beli ke dalam array keranjang
+        $keranjang[] = array(
+          'id_cart' => $row['id_cart'],
+          'id_sayuran' => $row['id_sayuran'],
+          'id_user' => $row['id_user'],
+          'qty' => $row['qty'],
+          'nama_sayuran' => $data_sayuran['nama_sayuran'],
+          'harga_sayuran' => $data_sayuran['harga_sayuran']
+        );
+      }
+
+      // Tampilkan data keranjang belanja
+      foreach ($keranjang as $item) {
+        echo "<div class='cart-card'>";
+        echo "<div class='cart-item'>";
+        echo "<label>Nama Sayuran: </label>" . $item['nama_sayuran'] . "<br>";
+        echo "<label>Jumlah Beli: </label>" . $item['qty'] . "<br>";
+        echo "<label>Harga: </label>" . $item['harga_sayuran'] . "<br>";
+
+        echo "<div class='btn-qty' style='display:flex;'>";
+        // Form untuk mengurangi quantity dengan ikon Font Awesome
+        echo "<form method='post' action='update_cart.php' class='quantity-form'>";
+        echo "<input type='hidden' name='action' value='subtract'>";
+        echo "<input type='hidden' name='id_cart' value='" . $item['id_cart'] . "'>";
+        echo "<button type='submit' class='kurang'>";
+        echo "<i class='fas fa-minus-circle'></i> Kurangi";
+        echo "</button>";
+        echo "</form>";
+
+
+        // Form untuk menambah quantity dengan ikon Font Awesome
+        echo "<form method='post' action='update_cart.php' class='quantity-form'>";
+        echo "<input type='hidden' name='id_cart' value='" . $item['id_cart'] . "'>";
+        echo "<input type='hidden' name='action' value='add'>";
+        echo "<button type='submit' class='tambah'>";
+        echo "<i class='fas fa-plus-circle'></i> Tambah";
+        echo "</button>";
+
+        echo "</form>";
+        echo "</div>";
+        echo "</div>"; // .cart-item
+        echo "</div>"; // .cart-card
+      }
+
+
+    } else {
+      echo "Keranjang belanja Anda masih kosong.";
+    }
+} else {
+  echo "Anda belum login, silakan <a href='login.php'>login</a> terlebih dahulu.";
+}
+?>
 </body>
 
 </html>

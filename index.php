@@ -3,32 +3,8 @@ session_start();
 include 'koneksi.php';
 if ($_SESSION['status'] != "login") {
   header('location:login/login.php?pesan=belum_login');
+  exit();
 }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Terima data dari permintaan AJAX
-  $nama_sayuran = $_POST['nama_sayuran'];
-  $harga_sayuran = $_POST['harga_sayuran'];
-
-  // Tambahkan produk ke dalam session 'cart'
-  if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = array();
-  }
-
-  $_SESSION['cart'][] = array(
-    'nama_sayuran' => $nama_sayuran,
-    'harga_sayuran' => $harga_sayuran
-  );
-
-  // Kirim respons ke JavaScript sebagai konfirmasi bahwa produk berhasil ditambahkan ke keranjang
-  echo "Produk berhasil ditambahkan ke keranjang.";
-} else {
-  // Jika bukan permintaan POST, tangani kesalahan
-  http_response_code(400); // Bad Request
-  echo "Terjadi kesalahan saat menambahkan produk ke keranjang.";
-}
-
-
 $sql = 'SELECT * FROM sayuran';
 $result = $conn->query($sql);
 ?>
@@ -53,12 +29,11 @@ $result = $conn->query($sql);
     <nav class="navbar">
       <a href="index.html">home</a>
       <a href="page/about us.html">about us</a>
-      <a href="page/product.html">Admin Panel</a>
     </nav>
 
     <div class="icons">
       <a class="fas fa-shopping-cart" href="page/cart.php" id="cart-btn"></a>
-      <a class="fas fa-user" id="user-btn"></a>
+      <a class="fas fa-user" id="user-btn" href="page/user.php"></a>
       <a class="fas fa-bars" id="menu-btn"></a>
     </div>
   </header>
@@ -72,7 +47,7 @@ $result = $conn->query($sql);
         segar dan tim yang siap membantu, mari berbelanja di FreshVegs untuk
         pengalaman berbelanja sayur yang berbeda!
       </p>
-      <a href="page/product.html" class="btn">Ayo Beli!</a>
+      <a href="#prdct" class="btn">Ayo Beli!</a>
     </div>
   </section>
 
@@ -120,7 +95,7 @@ $result = $conn->query($sql);
   </div>
 
   <h1 class="heading" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
-    <span>The Product</span>
+    <span id="prdct">The Product</span>
   </h1>
   <div class="container">
     <?php
@@ -133,9 +108,10 @@ $result = $conn->query($sql);
         echo "<div class='product-info'>";
         echo "<h2 class='product-title'>" . $row['nama_sayuran'] . "</h2>";
         echo "<p class='product-price'>" . $row['harga_sayuran'] . $row['satuan'] . "</p>";
-        echo "<div class='add-to-cart'>";
-        echo "<a class='btn'>add to cart</a>";
-        echo "</div>";
+        echo "<form class='add-to-cart' method='post' action='page/add_to_cart.php'>";
+        echo "<input type='hidden' name='id_sayuran' value='" . $row['id_sayuran'] . "'>";
+        echo "<input type='submit' name='add_to_cart' value='Add to Cart'>";
+        echo "</form>";
         echo "</div>";
         echo "</div>";
       }
@@ -157,8 +133,10 @@ $result = $conn->query($sql);
   <!-- JAVA -->
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script></script>
-  <script src="script/script.js" href></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="script/script.js"></script>
   <script src="script/addTocart.js"></script>
 </body>
 
