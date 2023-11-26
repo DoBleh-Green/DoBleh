@@ -1,5 +1,9 @@
 <?php
-require 'koneksi.php';
+session_start();
+include 'koneksi.php';
+if ($_SESSION['status'] != "login") {
+  header('location:login/login.php?pesan=belum_login');
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Terima data dari permintaan AJAX
