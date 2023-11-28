@@ -76,7 +76,6 @@ section {
 }
 
 .header {
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -149,194 +148,44 @@ section {
   background: #fff;
 }
 
-.shopping-cart.active {
-  right: 2rem;
-  transition: 0.4s linear;
-}
-
-.header .shopping-cart .box {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  position: relative;
-  margin: 1rem 0;
-}
-
-.header .shopping-cart .box img {
-  height: 5rem;
-  width: 6rem;
-}
-
-.header .shopping-cart .box .fa-trash {
-  font-size: 1.5rem;
-  position: initial;
-  top: 50%;
-  right: 2rem;
-  cursor: pointer;
-  color: var(--light-collor);
-  transform: translateY(-50%);
-}
-
-.header .shopping-cart .box .fa-trash:hover {
-  color: var(--green);
-}
-
-.header .shopping-cart .box .content h3 {
-  color: var(--black);
-  font-size: 1.7rem;
-  padding-bottom: 1rem;
-}
-
-.header .shopping-cart .box .content span {
-  color: var(--light-collor);
-  font-size: 1.6rem;
-}
-
-.header .shopping-cart .box .content .quantity {
-  padding-left: 1rem;
-}
-
-.header .shopping-cart .total {
-  font-size: 2.5rem;
-  padding: 1rem 0;
-  text-align: center;
-  color: var(--black);
-}
-
-.header .shopping-cart .btn {
-  display: block;
-  text-align: center;
-  margin: 1rem;
-}
 
 
-.features .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap: 1.5rem;
-}
-
-.features .box-container .box {
-  padding: 3rem 2rem;
-  background: #fff;
-  outline: var(--outline);
-  outline-offset: -1rem;
-  text-align: center;
-  box-shadow: var(--box-shadow);
-}
-
-.features .box-container .box img {
-  width: 30rem;
-}
-
-.features .box-container .box h3 {
-  font-size: 2.5rem;
-  line-height: 1.8;
-  color: var(--black);
-}
-
-.features .box-container .box p {
-  font-size: 1.5rem;
-  line-height: 1.8;
-  color: var(--light-collor);
-  padding: 1rem;
-}
-
-.features .box-container .box img:hover {
-  width: 31rem;
-}
-
-.features .box-container .box:hover {
-  outline: var(--black);
-  outline-width: 0rem;
-  outline-offset: 0rem;
-  cursor: pointer;
-  color: var(--black);
-  transition: 0.1s;
-}
-
-.container {
-  max-width: 1200px;
+form {
+  width: 300px;
   margin: 20px auto;
+  background-color: #dfe1e2;
   padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
-.product {
-  width: calc(33.33% - 20px);
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  max-width: 100%;
-  justify-content: space-between;
-}
-
-
-.product:hover img {
-  transform:scale(0.9);
-}
-
-.product img {
-  max-width: 100%;
-  margin-bottom: 10px;
-}
-
-.product h2,p {
-  color: #262626;
-  font-size: 2.5rem;
-}
-
-.product p {
-  font-size: large;
-}
-
-.product-info {
-  justify-content: safe;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-}
-
-.product-title {
-  font-weight: bold;
-}
-
-.product-price {
-  color: #e74c3c;
-  margin: 0;
-}
-
-.add-to-cart {
+label {
+  display: block;
   margin-top: 10px;
-  text-align: center;
 }
 
-.add-to-cart button {
-  background-color: #e74c3c;
-  color: #ffffff;
+input[type="text"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 16px;
+  background-color: #4CAF50;
+  color: white;
   border: none;
-  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-.add-to-cart button:hover {
-  background-color: #c0392b;
 }
 
-
-
-
-
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
 
 
 
@@ -414,9 +263,11 @@ p {
   html {
     font-size: 55%;
   }
+
   .header {
     padding: 2rem;
   }
+
   section {
     padding: 2rem;
   }
@@ -433,7 +284,7 @@ p {
     background: #fff;
   }
 
-  .heading{
+  .heading {
     padding-top: 3rem;
     max-height: 500px;
     font-size: small;
@@ -463,7 +314,7 @@ p {
     min-width: 25rem;
   }
 
-  .product:hover{
+  .product:hover {
     background-color: #e4f0e5;
     transition: 0.3s;
   }
