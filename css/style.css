@@ -339,20 +339,23 @@ p {
 .product-price {
   color: #e74c3c;
 }
-.add-to-cart {
+.add_to_cart {
   margin-top: 10px;
   text-align: center;
 }
-.add-to-cart button {
-  background-color: #e74c3c;
+
+.add_to_cart input {
+  background-color: #6fe73c;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   transition: 0.3s;
+  border-radius: 7px;
 }
-.add-to-cart button:hover {
-  background-color: #c0392b;
+
+.add_to_cart input:hover {
+  background-color: #6fc02b;
 }
 
 .footer {

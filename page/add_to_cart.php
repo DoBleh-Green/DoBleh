@@ -25,7 +25,7 @@ if (isset($_POST['add_to_cart'])) {
 
             echo "<script>
             alert('$message');
-          </script>";
+            </script>";
             exit(); // Pastikan untuk keluar dari skrip setelah melakukan pengalihan
         } else {
             $error_message = "Gagal memperbarui jumlah item di keranjang: " . mysqli_error($conn);
@@ -41,7 +41,7 @@ if (isset($_POST['add_to_cart'])) {
         $query_tambah_ke_cart = "INSERT INTO cart_user (id_sayuran, id_user, qty) VALUES ('$id_sayuran', '$id_user', '$qty')";
 
         if (mysqli_query($conn, $query_tambah_ke_cart)) {
-            echo "Item berhasil ditambahkan ke keranjang.";
+            header('Location: ../index.php?msg= sayuran berhasil di masukan ke keranjang');
         } else {
             echo "Gagal menambahkan item ke keranjang: " . mysqli_error($conn);
         }

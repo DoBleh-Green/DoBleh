@@ -33,7 +33,7 @@ $result = $conn->query($sql);
 
     <div class="icons">
       <a class="fas fa-shopping-cart" href="page/cart.php" id="cart-btn"></a>
-      <a class="fas fa-user" id="user-btn" href="page/user.php"></a>
+      <a class="fas fa-right-from-bracket" id="logout-btn" href="login/logout.php"></a>
       <a class="fas fa-bars" id="menu-btn"></a>
     </div>
   </header>
@@ -108,7 +108,7 @@ $result = $conn->query($sql);
         echo "<div class='product-info'>";
         echo "<h2 class='product-title'>" . $row['nama_sayuran'] . "</h2>";
         echo "<p class='product-price'>" . $row['harga_sayuran'] . $row['satuan'] . "</p>";
-        echo "<form class='add-to-cart' method='post' action='page/add_to_cart.php'>";
+        echo "<form class='add_to_cart' method='post' action='page/add_to_cart.php'>";
         echo "<input type='hidden' name='id_sayuran' value='" . $row['id_sayuran'] . "'>";
         echo "<input type='submit' name='add_to_cart' value='Add to Cart'>";
         echo "</form>";
