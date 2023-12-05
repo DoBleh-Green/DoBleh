@@ -15,6 +15,26 @@ include '../koneksi.php'
 </head>
 
 <body>
+  <style>
+    table {
+      border-collapse: collapse;
+      display: table;
+      background: beige;
+      width: 400px;
+      margin: 10px;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
   <header class="header">
     <img src="../image/logo.png">
 
@@ -26,11 +46,12 @@ include '../koneksi.php'
     <div class="icons">
       <a class="fas fa-shopping-cart" href="cart.php" id="cart-btn"></a>
       <a class="fas fa-right-from-bracket" id="logout-btn" href="../login/logout.php"></a>
+      <a class="fas fa-box" id="Box-btn" href="pesanan-user.php"></a>
       <a class="fas fa-bars" id="menu-btn"></a>
     </div>
   </header>
 
-
+<h1>Pesanan Anda</h1>
 
 
   <?php
@@ -70,7 +91,7 @@ include '../koneksi.php'
     echo "<table border='1'>
     <tr>
     <th>ID Transaksi</th>
-    <th>ID Pelanggan</th>
+    <th>ID Penerima</th>
     <th>Tanggal</th>
     <th>Status</th>
     </tr>";
@@ -79,23 +100,9 @@ include '../koneksi.php'
         <td>" . $row["id_transaksi"] . "</td>
         <td>" . $row["id_penerima"] . "</td>
         <td>" . $row["tanggal"] . "</td>
+        <td>" . $row["status"] . "</td>
         <td>
-        <form method='post' action=''>
-        <input type='hidden' name='id_transaksi' value='" . $row["id_transaksi"] . "'>
-        <select name='new_status'>";
 
-      // Menampilkan dropdown dengan nilai enum dari database
-      foreach ($statusEnumValues as $enumValue) {
-        echo "<option value='$enumValue'";
-        if ($row["status"] === $enumValue) {
-          echo " selected='selected'";
-        }
-        echo ">$enumValue</option>";
-      }
-
-      echo "</select>
-        <input type='submit' name='update_status' value='Update'>
-        </form>
         </td>
         </tr>";
     }

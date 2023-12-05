@@ -1,72 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kwitansi Pembelian</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="kwitansi">
-      <h1>Kwitansi Pembelian</h1>
-      <p>
-        Nomor :
-        <?php .['id_transaksi'].?>
-      </p>
-      <p>
-        Nama :
-        <?php .['nama'].?>
-      </p>
-      <p>
-        Nomor Telpon :
-        <?php .['no_tlp'].?>
-      </p>
-      <p>
-        Alamat :
-        <?php .['alamat'].?>
-      </p>
-      <p>Tanggal Pembelian : 18 November 2020</p>
+<html>
+<head>
+  <title>Tampilkan Informasi Pengguna</title>
+</head>
+<body>
 
-      <table>
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Sayuran</th>
-            <th>Jumlah</th>
-            <th>Harga / pc</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Timun</td>
-            <td>3</td>
-            <td>Rp25.000</td>
-            <td>Rp75.000</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Bayam</td>
-            <td>4</td>
-            <td>Rp30.000</td>
-            <td>Rp120.000</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>tomat</td>
-            <td>1</td>
-            <td>Rp625.000</td>
-            <td>Rp625.000</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4">Jumlah</td>
-            <td>Rp 820.000</td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-  </body>
+<!-- Tombol untuk ID Pengguna 1 -->
+<button onclick="tampilkanInformasi(1)">Tampilkan Informasi Pengguna 1</button>
+
+<!-- Tombol untuk ID Pengguna 2 -->
+<button onclick="tampilkanInformasi(2)">Tampilkan Informasi Pengguna 2</button>
+
+<script>
+  // Data pengguna dalam bentuk objek di dalam array
+  const dataPengguna = [
+    { id: 1, nama: "Nama Pengguna 1", telepon: "123456789", alamat: "Alamat Pengguna 1" },
+    { id: 2, nama: "Nama Pengguna 2", telepon: "987654321", alamat: "Alamat Pengguna 2" }
+    // tambahkan data pengguna lainnya jika diperlukan
+  ];
+
+  // Fungsi untuk menampilkan informasi berdasarkan ID pengguna
+  function tampilkanInformasi(id) {
+    const pengguna = dataPengguna.find(user => user.id === id);
+
+    if (pengguna) {
+      alert(`Nama: ${pengguna.nama}\nTelepon: ${pengguna.telepon}\nAlamat: ${pengguna.alamat}`);
+      // Anda bisa menyesuaikan cara menampilkan informasi (misalnya, menampilkan dalam elemen HTML)
+    } else {
+      alert('Pengguna tidak ditemukan');
+    }
+  }
+</script>
+
+</body>
 </html>

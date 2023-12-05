@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'koneksi.php';
+include '../koneksi.php';
 if ($_SESSION['status'] != "login") {
   header('location:login/login.php?pesan=belum_login');
   exit();
@@ -25,24 +25,18 @@ if ($_SESSION['status'] != "login") {
     <img src="../image/logo.png" alt="" />
 
     <nav class="navbar">
-      <a href="../index.html">home</a>
-      <a href="about us.html">about us</a>
-      <a href="product.html">product</a>
+      <a href="../index.php">home</a>
+      <a href="about us.php">about us</a>
     </nav>
 
     <div class="icons">
-      <div class="fas fa-bars" id="menu-btn"></div>
+      <a class="fas fa-shopping-cart" href="cart.php" id="cart-btn"></a>
+      <a class="fas fa-right-from-bracket" id="logout-btn" href="../login/logout.php"></a>
+      <a class="fas fa-box" id="Box-btn" href="pesanan-user.php"></a>
+      <a class="fas fa-bars" id="menu-btn"></a>
     </div>
 
-    <div class="shopping-cart">
-      <div class="box">
-        <div class="content">
-          <span class="price"></span>
-        </div>
-      </div>
 
-      <div class="total" id="cart-total">total : Rp 0</div>
-      <a href="" class="href btn">checkout</a>
     </div>
   </header>
 

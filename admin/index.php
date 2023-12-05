@@ -47,17 +47,12 @@ $result = $conn->query($sql);
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="pesanan.php">
                                 <span data-feather="users"></span>
                                 Users
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../" target="_blank">
-                                <span data-feather="credit-card"></span>
-                                Dashboard shop
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
             </nav>

@@ -28,8 +28,8 @@ if (isset($_SESSION['id_user'])) {
                 $status = "Sedang Dikemas"; // Status transaksi
                 $tanggal = date("Y-m-d H:i:s"); // Tanggal saat ini
 
-                $sqlAddTransaction = "INSERT INTO transaksi (id_penerima, status, tanggal) 
-                                    VALUES ('$id_penerima', '$status', '$tanggal')";
+                $sqlAddTransaction = "INSERT INTO transaksi (id_penerima, status, tanggal, id_user) 
+                                    VALUES ('$id_penerima', '$status', '$tanggal', $id_user);";
                 $resultAddTransaction = mysqli_query($conn, $sqlAddTransaction);
 
                 if ($resultAddTransaction) {

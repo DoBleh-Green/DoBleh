@@ -27,13 +27,14 @@ $result = $conn->query($sql);
     <img src="image/logo.png" />
 
     <nav class="navbar">
-      <a href="index.html">home</a>
-      <a href="page/about us.html">about us</a>
+      <a href="index.php">home</a>
+      <a href="page/about us.php">about us</a>
     </nav>
 
     <div class="icons">
       <a class="fas fa-shopping-cart" href="page/cart.php" id="cart-btn"></a>
       <a class="fas fa-right-from-bracket" id="logout-btn" href="login/logout.php"></a>
+      <a class="fas fa-box" id="Box-btn" href="page/pesanan-user.php"></a>
       <a class="fas fa-bars" id="menu-btn"></a>
     </div>
   </header>
