@@ -2,24 +2,23 @@
 session_start();
 include '../koneksi.php';
 
-// Periksa apakah pengguna sudah login dan ada informasi id_user dalam sesi
 if (isset($_SESSION['id_user'])) {
   $id_user = $_SESSION['id_user'];
 
-  // Query untuk mengambil data keranjang belanja berdasarkan id_user yang sedang login
-  $sql = "SELECT cu.id_cart, cu.id_sayuran, cu.qty, s.nama_sayuran, s.harga_sayuran, s.gambar_sayuran, s.satuan
-          FROM cart_user cu
-          INNER JOIN sayuran s ON cu.id_sayuran = s.id_sayuran
-          WHERE cu.id_user = $id_user";
-  $query = mysqli_query($conn, $sql);
-  // Query untuk mengambil data keranjang belanja berdasarkan id_user yang sedang login
+  // Ambil data penerima dari tabel data_penerima berdasarkan id_user
+  $sql_penerima = "SELECT * FROM data_penerima WHERE id_user = $id_user";
+  $query_penerima = mysqli_query($conn, $sql_penerima);
 
+  // Jika data penerima ditemukan untuk id_user tertentu
+  if ($query_penerima && mysqli_num_rows($query_penerima) > 0) {
+    $penerima_data = mysqli_fetch_assoc($query_penerima);
+  }
 } else {
-  echo "Anda belum login, silakan <a href='login.php'>login</a> terlebih dahulu.";
+  echo "Anda belum login, silakan <a href='../login/login.php'>login</a> terlebih dahulu.";
 }
 
 $sql2 = "SELECT * FROM cart_user WHERE id_user = $id_user";
-$query = mysqli_query($conn, $sql2);
+$query2 = mysqli_query($conn, $sql2);
 
 ?>
 <!DOCTYPE html>
@@ -52,12 +51,12 @@ $query = mysqli_query($conn, $sql2);
 
   <?php
   // Periksa apakah ada baris yang dikembalikan oleh query
-  if (mysqli_num_rows($query) > 0) {
+  if (mysqli_num_rows($query2) > 0) {
     // Buat array untuk menampung data keranjang belanja
     $keranjang = array();
 
     // Mulai iterasi data yang dikembalikan oleh query
-    while ($row = mysqli_fetch_assoc($query)) {
+    while ($row = mysqli_fetch_assoc($query2)) {
       // Ambil informasi mengenai sayuran berdasarkan id_sayuran
       $sql_sayuran = "SELECT * FROM sayuran WHERE id_sayuran = $row[id_sayuran]";
       $query_sayuran = mysqli_query($conn, $sql_sayuran);
@@ -136,7 +135,8 @@ $query = mysqli_query($conn, $sql2);
     // Tampilkan total harga dan tombol check out
     echo "<div class='total-checkout-container'>";
     echo "<div class='total-harga'>Total Harga: Rp" . number_format($total_harga) . "</div>"; // Menampilkan total harga dengan format angka
-    echo "<button class='btn-checkout' onclick='showPopup()'>Check Out</button>";
+    echo "<a class='btn-penerima' onclick='showPopup()'>Data penerima</a>";
+    echo "<a class='btn-checkout' onclick='showPopup()' href='checkOut.php'>Check Out</a>";
     echo "</div>";
 
   } else {
@@ -144,16 +144,31 @@ $query = mysqli_query($conn, $sql2);
   }
   ?>
 
-  <div id="checkout-popup" class="popup-container">
+  <div id="penerima-popup" class="popup-container">
     <div class="popup-content">
+      <h1>Data Penerima</h1>
       <span class="close-btn" onclick="closePopup()">&times;</span>
-      <form action="checkOut.php" method="POST">
-        <label for="nama">Nama:</label><br>
-        <input type="text" id="nama" name="nama"><br>
-        <label for="no_tlp">Nomor Telepon:</label><br>
-        <input type="tel" id="no_tlp" name="no_tlp"><br>
-        <label for="alamat">Alamat:</label><br>
-        <textarea id="alamat" name="alamat"></textarea><br><br>
+      <form id="formPenerima" action="edit.php" method="POST" onsubmit="submitForm(); return true;">
+        <?php
+        if (isset($_SESSION['id_user'])) {
+          echo '<input type="text" id="id_user" name="id_user" readonly value="' . $id_user . '">';
+          if (isset($penerima_data)) {
+            echo '<label for="nama">Nama:</label><br>';
+            echo '<input type="text" id="nama" name="nama" value="' . $penerima_data['nama'] . '"><br>';
+            echo '<label for="no_tlp">Nomor Telepon:</label><br>';
+            echo '<input type="tel" id="no_tlp" name="no_tlp" value="' . $penerima_data['no_tlp'] . '"><br>';
+            echo '<label for="alamat">Alamat:</label><br>';
+            echo '<textarea id="alamat" name="alamat">' . $penerima_data['alamat'] . '</textarea><br><br>';
+          } else {
+            echo '<label for="nama">Nama:</label><br>';
+            echo '<input type="text" id="nama" name="nama"><br>';
+            echo '<label for="no_tlp">Nomor Telepon:</label><br>';
+            echo '<input type="tel" id="no_tlp" name="no_tlp"><br>';
+            echo '<label for="alamat">Alamat:</label><br>';
+            echo '<textarea id="alamat" name="alamat"></textarea><br><br>';
+          }
+        }
+        ?>
         <input type="submit" value="Kirim">
       </form>
     </div>
@@ -162,15 +177,30 @@ $query = mysqli_query($conn, $sql2);
 </body>
 <script src="https://kit.fontawesome.com/d7c9159410.js" crossorigin="anonymous"></script>
 <script>
+
+  function showPopup() {
+    // Periksa apakah bidang data penerima sudah diisi
+    var nama = document.getElementById('nama').value;
+    var no_tlp = document.getElementById('no_tlp').value;
+    var alamat = document.getElementById('alamat').value;
+
+    if (nama === '' || no_tlp === '' || alamat === '') {
+      alert('Mohon lengkapi terlebih dahulu data penerima.');
+    } else {
+      document.getElementById('penerima-popup').style.display = 'block';
+    }
+  }
+
   // Fungsi untuk menampilkan pop-up
   function showPopup() {
-    document.getElementById('checkout-popup').style.display = 'block';
+    document.getElementById('penerima-popup').style.display = 'block';
   }
 
   // Fungsi untuk menutup pop-up
   function closePopup() {
-    document.getElementById('checkout-popup').style.display = 'none';
+    document.getElementById('penerima-popup').style.display = 'none';
   }
 </script>
+
 
 </html>

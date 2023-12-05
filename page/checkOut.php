@@ -1,32 +1,52 @@
-<?
+<?php
 session_start();
 include '../koneksi.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_SESSION['id_user'])) {
-        $id_user = $_SESSION['id_user'];
-        $nama = $_POST['nama'];
-        $no_tlp = $_POST['no_tlp'];
-        $alamat = $_POST['alamat'];
+if (isset($_SESSION['id_user'])) {
+    $id_user = $_SESSION['id_user'];
 
-        // Insert data pemesanan ke tabel data_pelanggan
-        $insert_pelanggan = "INSERT INTO data_pelanggan (nama, no_tlp, alamat, id_user) VALUES ('$nama', '$no_tlp', '$alamat', $id_user)";
-        mysqli_query($conn, $insert_pelanggan);
+    // Pindahkan data dari cart_user ke cart_kwitansi
+    $sqlMoveData = "INSERT INTO cart_kwitansi (id_sayuran, id_user, qty) 
+                    SELECT id_sayuran, id_user, qty FROM cart_user WHERE id_user = $id_user";
+    $resultMoveData = mysqli_query($conn, $sqlMoveData);
 
-        // Ambil ID pelanggan yang baru saja dimasukkan
-        $id_pelanggan = mysqli_insert_id($conn);
+    if ($resultMoveData) {
+        // Jika berhasil memindahkan data, hapus data dari cart_user
+        $sqlDeleteData = "DELETE FROM cart_user WHERE id_user = $id_user";
+        $resultDeleteData = mysqli_query($conn, $sqlDeleteData);
 
-        // Update status transaksi di tabel transaksi
-        $update_transaksi = "UPDATE transaksi SET status = 'Sedang Dikemas' WHERE id_pelanggan = $id_pelanggan";
-        mysqli_query($conn, $update_transaksi);
+        if ($resultDeleteData) {
+            // Ambil id_penerima dari tabel data_penerima
+            $sqlGetReceiverId = "SELECT id_penerima FROM data_penerima WHERE id_user = $id_user";
+            $resultReceiverId = mysqli_query($conn, $sqlGetReceiverId);
 
-        // Kosongkan keranjang belanja pengguna setelah checkout
-        $hapus_keranjang = "DELETE FROM cart_user WHERE id_user = $id_user";
-        mysqli_query($conn, $hapus_keranjang);
+            if ($resultReceiverId && mysqli_num_rows($resultReceiverId) > 0) {
+                $row = mysqli_fetch_assoc($resultReceiverId);
+                $id_penerima = $row['id_penerima'];
 
-        // Redirect atau tampilkan pesan sukses, dll.
+                // Tambahkan data transaksi
+                $status = "Sedang Dikemas"; // Status transaksi
+                $tanggal = date("Y-m-d H:i:s"); // Tanggal saat ini
+
+                $sqlAddTransaction = "INSERT INTO transaksi (id_penerima, status, tanggal) 
+                                    VALUES ('$id_penerima', '$status', '$tanggal')";
+                $resultAddTransaction = mysqli_query($conn, $sqlAddTransaction);
+
+                if ($resultAddTransaction) {
+                    header("Location: pesanan-user.php");
+                } else {
+                    echo "Gagal menambahkan data transaksi: " . mysqli_error($conn);
+                }
+            } else {
+                echo "ID penerima tidak ditemukan untuk pengguna ini.";
+            }
+        } else {
+            echo "Gagal menghapus data dari cart_user: " . mysqli_error($conn);
+        }
     } else {
-        echo "Anda belum login, silakan <a href='login.php'>login</a> terlebih dahulu.";
+        echo "Gagal memindahkan data ke cart_kwitansi: " . mysqli_error($conn);
     }
+} else {
+    echo "Anda belum login, silakan <a href='../login/login.php'>login</a> terlebih dahulu.";
 }
 ?>

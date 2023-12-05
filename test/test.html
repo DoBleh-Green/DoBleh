@@ -1,25 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Website</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>Produk</h1>
-    <div class="product">
-        <h2>Produk 1</h2>
-        <p>Harga: $10</p>
-        <button class="add-to-cart-btn" data-product="Produk 1" data-price="10">Tambah ke Keranjang</button>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kwitansi Pembelian</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="kwitansi">
+      <h1>Kwitansi Pembelian</h1>
+      <p>
+        Nomor :
+        <?php .['id_transaksi'].?>
+      </p>
+      <p>
+        Nama :
+        <?php .['nama'].?>
+      </p>
+      <p>
+        Nomor Telpon :
+        <?php .['no_tlp'].?>
+      </p>
+      <p>
+        Alamat :
+        <?php .['alamat'].?>
+      </p>
+      <p>Tanggal Pembelian : 18 November 2020</p>
 
-    <div id="cart-popup" class="cart-popup">
-        <h2>Keranjang Belanja</h2>
-        <ul id="cart-items"></ul>
-        <p id="cart-total">Total: $0</p>
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Sayuran</th>
+            <th>Jumlah</th>
+            <th>Harga / pc</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Timun</td>
+            <td>3</td>
+            <td>Rp25.000</td>
+            <td>Rp75.000</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Bayam</td>
+            <td>4</td>
+            <td>Rp30.000</td>
+            <td>Rp120.000</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>tomat</td>
+            <td>1</td>
+            <td>Rp625.000</td>
+            <td>Rp625.000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">Jumlah</td>
+            <td>Rp 820.000</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>
