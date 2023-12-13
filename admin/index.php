@@ -52,7 +52,12 @@ $result = $conn->query($sql);
                                 Users
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="../login/logout.php">
+                                <span data-feather="log-out"></span>
+                                Log Out
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>

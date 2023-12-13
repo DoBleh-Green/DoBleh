@@ -150,13 +150,11 @@ if ($_SESSION['status'] != "login") {
       </div>
 
       <div class="box">
-        <img src="../image/fitur2-preview(2).png" alt="" />
-        <h3>Beberapa Pembayaran Tersedia</h3>
+        <img src="../image/fitur2-preview(2).jpg" alt="" />
+        <h3>Pembayaran Ditempat</h3>
         <p>
-          Kami memberikan Anda pilihan beragam metode pembayaran sehingga Anda
-          dapat memilih cara yang paling nyaman bagi Anda. Dari kartu kredit
-          hingga transfer bank, fleksibilitas ini memastikan pengalaman
-          berbelanja yang lancar dan tanpa repot.
+          Tidak perlu bayar di muka! Dapatkan pesanan terlebih dahulu, cek barangnya, baru bayar saat sampai di tangan
+          Anda. Pengalaman berbelanja yang lebih nyaman dan praktis!
         </p>
       </div>
     </div>

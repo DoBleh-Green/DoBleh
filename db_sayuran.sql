@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Des 2023 pada 10.46
+-- Waktu pembuatan: 13 Des 2023 pada 10.21
 -- Versi server: 8.0.17
 -- Versi PHP: 8.2.4
 
@@ -33,15 +33,6 @@ CREATE TABLE `cart_kwitansi` (
   `id_user` int(11) NOT NULL,
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `cart_kwitansi`
---
-
-INSERT INTO `cart_kwitansi` (`id_cart`, `id_sayuran`, `id_user`, `qty`) VALUES
-(48, 3, 22, 2),
-(49, 2, 22, 1),
-(51, 2, 22, 1);
 
 -- --------------------------------------------------------
 
@@ -75,7 +66,7 @@ CREATE TABLE `data_penerima` (
 --
 
 INSERT INTO `data_penerima` (`id_penerima`, `nama`, `no_tlp`, `alamat`, `id_user`) VALUES
-(21, 'saya', '085432762267', 'jalan pasudan', 22);
+(22, 'saya', '085432762267', 'jalan pasudan', 22);
 
 -- --------------------------------------------------------
 
@@ -95,7 +86,6 @@ CREATE TABLE `data_user` (
 --
 
 INSERT INTO `data_user` (`id_user`, `username`, `password`, `role`) VALUES
-(6, 'admin', 'admin', 'admin'),
 (22, 'pembeli', 'pembeli', 'buyer');
 
 -- --------------------------------------------------------
@@ -137,13 +127,6 @@ CREATE TABLE `transaksi` (
   `Tanggal` date NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `transaksi`
---
-
-INSERT INTO `transaksi` (`id_transaksi`, `id_penerima`, `status`, `Tanggal`, `id_user`) VALUES
-(6, 21, 'Sedang Dikemas', '2023-12-05', 22);
 
 --
 -- Indexes for dumped tables
@@ -200,25 +183,25 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT untuk tabel `cart_kwitansi`
 --
 ALTER TABLE `cart_kwitansi`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT untuk tabel `cart_user`
 --
 ALTER TABLE `cart_user`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_penerima`
 --
 ALTER TABLE `data_penerima`
-  MODIFY `id_penerima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_penerima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_user`
 --
 ALTER TABLE `data_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `sayuran`
@@ -230,7 +213,7 @@ ALTER TABLE `sayuran`
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

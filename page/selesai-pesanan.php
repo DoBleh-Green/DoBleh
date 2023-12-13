@@ -1,5 +1,5 @@
 <?php
-include '../../koneksi.php';
+include '../koneksi.php';
 
 // Pastikan nilai 'id_transaksi' dari parameter URL adalah angka, untuk menghindari serangan SQL Injection
 if (isset($_GET['id_transaksi']) && is_numeric($_GET['id_transaksi'])) {
@@ -19,7 +19,7 @@ if (isset($_GET['id_transaksi']) && is_numeric($_GET['id_transaksi'])) {
     // Cek apakah data telah dihapus dari tabel transaksi
     if ($stmt_delete_transaksi->affected_rows > 0) {
         // Redirect kembali ke halaman 'data list siswa'
-        header("location: ../pesanan.php");
+        header("location: ../pesanan-user.php");
         exit();
     } else {
         echo "Gagal menghapus data transaksi.";

@@ -11,29 +11,12 @@ include '../koneksi.php'
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pesanan</title>
-  <link rel="stylesheet" href="../css/kwitansi.css">
+  <link rel="stylesheet" href="../css/pesanan-u.css">
 </head>
 
 <body>
   <style>
-    table {
-      border-collapse: collapse;
-      display: table;
-      background: beige;
-      width: 400px;
-      margin: 10px;
-    }
 
-    th,
-    td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
   </style>
   <header class="header">
     <img src="../image/logo.png">
@@ -51,68 +34,81 @@ include '../koneksi.php'
     </div>
   </header>
 
-<h1>Pesanan Anda</h1>
+  <h1>Pesanan Anda</h1>
 
 
-  <?php
-  // Fungsi untuk mendapatkan nilai enum dari database
-  function getEnumValues($conn, $table, $column)
-  {
-    $result = $conn->query("SHOW COLUMNS FROM $table LIKE '$column'");
-    $row = $result->fetch_assoc();
-    $enum_str = $row['Type'];
-    preg_match_all("/'([\w\s]+)'/", $enum_str, $matches);
-    return $matches[1];
-  }
-
-  // Mendapatkan nilai enum dari database
-  $statusEnumValues = getEnumValues($conn, 'transaksi', 'status');
-
-  // Jika terdapat perubahan pada status enum
-  if (isset($_POST['update_status'])) {
-    $id_transaksi = $_POST['id_transaksi'];
-    $new_status = $_POST['new_status'];
-
-    // Mengupdate status enum pada database
-    $sql = "UPDATE transaksi SET status='$new_status' WHERE id_transaksi=$id_transaksi";
-
-    if ($conn->query($sql) === TRUE) {
-      echo "Status berhasil diperbarui.";
-    } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+  <div class="container">
+    <?php
+    // Fungsi untuk mendapatkan nilai enum dari database
+    function getEnumValues($conn, $table, $column)
+    {
+      $result = $conn->query("SHOW COLUMNS FROM $table LIKE '$column'");
+      $row = $result->fetch_assoc();
+      $enum_str = $row['Type'];
+      preg_match_all("/'([\w\s]+)'/", $enum_str, $matches);
+      return $matches[1];
     }
-  }
 
-  // Mendapatkan data transaksi dari database
-  $sql = "SELECT id_transaksi, id_penerima, tanggal, status FROM transaksi";
-  $result = $conn->query($sql);
+    // Mendapatkan nilai enum dari database
+    $statusEnumValues = getEnumValues($conn, 'transaksi', 'status');
 
-  if ($result->num_rows > 0) {
-    echo "<table border='1'>
+    // Jika terdapat perubahan pada status enum
+    if (isset($_POST['update_status'])) {
+      $id_transaksi = $_POST['id_transaksi'];
+      $new_status = $_POST['new_status'];
+
+      // Mengupdate status enum pada database
+      $sql = "UPDATE transaksi SET status='$new_status' WHERE id_transaksi=$id_transaksi";
+
+      if ($conn->query($sql) === TRUE) {
+        echo "Status berhasil diperbarui.";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+    }
+
+    // Mendapatkan data transaksi dari database
+    $sql = "SELECT t.id_transaksi, t.id_penerima, t.tanggal, t.status, p.nama AS nama_penerima 
+    FROM transaksi t 
+    LEFT JOIN data_penerima p ON t.id_penerima = p.id_penerima";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+      echo "<table border='1'>
     <tr>
     <th>ID Transaksi</th>
     <th>ID Penerima</th>
     <th>Tanggal</th>
     <th>Status</th>
+    <th>Action</th>
+
     </tr>";
-    while ($row = $result->fetch_assoc()) {
-      echo "<tr>
+      while ($row = $result->fetch_assoc()) {
+        echo "<tr>
         <td>" . $row["id_transaksi"] . "</td>
-        <td>" . $row["id_penerima"] . "</td>
+        <td>" . $row["nama_penerima"] . "</td>
         <td>" . $row["tanggal"] . "</td>
-        <td>" . $row["status"] . "</td>
-        <td>
+        <td>" . $row["status"] . "</td>";
 
-        </td>
-        </tr>";
+        if ($row["status"] == 'Sudah Sampai') {
+          echo "</td>
+                <td>
+                <a href='selesai-pesanan.php?id_transaksi=" . $row['id_transaksi'] . "'>Selesai <i class='fa-solid fa-check'></i></a>
+                                                                      
+                </td>";
+        } else {
+          echo "<td>none</td>";
+        }
+
+        echo "</tr>";
+      }
+      echo "</table>";
+    } else {
+      echo "0 results";
     }
-    echo "</table>";
-  } else {
-    echo "0 results";
-  }
-  $conn->close();
-  ?>
-
+    $conn->close();
+    ?>
+  </div>
 
 
 

@@ -29,6 +29,35 @@ html {
   scroll-padding-top: 7rem;
 }
 
+h1 {
+  text-align: center;
+  margin: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
 body {
   background-color: #fff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40' width='80' height='40'%3E%3Cpath fill='%2353e05b' fill-opacity='0.4' d='M0 40a19.96 19.96 0 0 1 5.9-14.11 20.17 20.17 0 0 1 19.44-5.2A20 20 0 0 1 20.2 40H0zM65.32.75A20.02 20.02 0 0 1 40.8 25.26 20.02 20.02 0 0 1 65.32.76zM.07 0h20.1l-.08.07A20.02 20.02 0 0 1 .75 5.25 20.08 20.08 0 0 1 .07 0zm1.94 40h2.53l4.26-4.24v-9.78A17.96 17.96 0 0 0 2 40zm5.38 0h9.8a17.98 17.98 0 0 0 6.67-16.42L7.4 40zm3.43-15.42v9.17l11.62-11.59c-3.97-.5-8.08.3-11.62 2.42zm32.86-.78A18 18 0 0 0 63.85 3.63L43.68 23.8zm7.2-19.17v9.15L62.43 2.22c-3.96-.5-8.05.3-11.57 2.4zm-3.49 2.72c-4.1 4.1-5.81 9.69-5.13 15.03l6.61-6.6V6.02c-.51.41-1 .85-1.48 1.33zM17.18 0H7.42L3.64 3.78A18 18 0 0 0 17.18 0zM2.08 0c-.01.8.04 1.58.14 2.37L4.59 0H2.07z'%3E%3C/path%3E%3C/svg%3E");
@@ -192,189 +221,11 @@ section {
   margin: 1rem;
 }
 
-.cart-card-container {
-  width: 37rem;
-  margin: 50px 68px auto 68px;
-  display: inline-flex;
-  height: 140px;
+.container {
+  margin: 50px;
+  margin-top: 0;
 }
 
-.cart-card {
-  position: relative;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  padding-top: 10px;
-  margin-bottom: 16px;
-  width: 100%; /* Atur lebar sesuai kebutuhan */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.cart-text {
-  justify-content: space-between;
-}
-
-.cart-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.cart-item-img img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-right: 16px;
-}
-
-.btn-qty {
-  position: absolute;
-  display: flex;
-  flex-direction: column; /* Mengatur tata letak tombol ke dalam kolom */
-  left: 33rem;
-}
-
-.quantity-form {
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-.quantity-form button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-.fa-trash {
-  color: red;
-}
-
-.fa-trash:hover {
-  color: rgb(180, 0, 0);
-}
-
-.total-checkout-container {
-  position: fixed;
-  bottom: 20px; /* Atur posisi dari bawah sesuai kebutuhan */
-  right: 20px; /* Atur posisi dari kanan sesuai kebutuhan */
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.total-harga {
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.btn-penerima {
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  margin: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-penerima:hover {
-  background-color: #45a049;
-}
-
-.btn-checkout {
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  margin: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-checkout:hover {
-  background-color: #45a049;
-}
-
-.no-item {
-  padding: 10px;
-  background-color: #bdc3c7;
-}
-
-/* CSS untuk pop-up */
-.popup-container {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-}
-
-.popup-content {
-  background-color: #fff;
-  width: 60%;
-  max-width: 500px;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 24px;
-  color: #888;
-}
-
-.close-btn:hover {
-  color: #555;
-}
-
-/* Styling tambahan untuk formulir */
-form {
-  margin-top: 20px;
-}
-
-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="tel"],
-textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-input[type="submit"] {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #0056b3;
-}
 .footer {
   padding: 3rem 0;
   background-color: #2c3e50;
@@ -389,25 +240,6 @@ input[type="submit"]:hover {
 .footer h3,
 p {
   font-size: 1.1rem;
-}
-
-.b-t {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.bg{
-  color: #fff;
-  background-color: #45a049;
-  padding: 20px;
-  border-radius: 7px;
-}
-
-.th1 {
-  text-align: center;
 }
 
 .footer h3 {

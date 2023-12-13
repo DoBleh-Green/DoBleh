@@ -6,7 +6,15 @@ if ($_SESSION['status'] != "login") {
   exit();
 }
 $sql = 'SELECT * FROM sayuran';
-$result = $conn->query($sql);
+$result1 = $conn->query($sql);
+
+// Ambil id_user dari sesi
+$id_user = $_SESSION['id_user'];
+
+// Cek apakah id_user ada di tabel cart_kwitansi
+$sql_check_order = "SELECT * FROM cart_kwitansi WHERE id_user = $id_user";
+$result_check_order = $conn->query($sql_check_order);
+$is_ordering = ($result_check_order->num_rows > 0);
 ?>
 
 <!DOCTYPE html>
@@ -79,13 +87,11 @@ $result = $conn->query($sql);
       </div>
 
       <div class="box">
-        <img src="image/fitur2-preview(2).png" alt="" />
-        <h3>Beberapa Pembayaran Tersedia</h3>
+        <img src="image/fitur2-preview(2).jpg" alt="" />
+        <h3>Pembayaran Ditempat</h3>
         <p>
-          Kami memberikan Anda pilihan beragam metode pembayaran sehingga Anda
-          dapat memilih cara yang paling nyaman bagi Anda. Dari kartu kredit
-          hingga transfer bank, fleksibilitas ini memastikan pengalaman
-          berbelanja yang lancar dan tanpa repot.
+          Tidak perlu bayar di muka! Dapatkan pesanan terlebih dahulu, cek barangnya, baru bayar saat sampai di tangan
+          Anda. Pengalaman berbelanja yang lebih nyaman dan praktis!
         </p>
       </div>
     </div>
@@ -101,9 +107,9 @@ $result = $conn->query($sql);
   <div class="container">
     <?php
     // Periksa apakah query berhasil dieksekusi
-    if ($result->num_rows > 0) {
+    if ($result1->num_rows > 0) {
       // Tampilkan data produk
-      while ($row = $result->fetch_assoc()) {
+      while ($row = $result1->fetch_assoc()) {
         echo "<div class='product'>";
         echo "<img src='" . $row['gambar_sayuran'] . "' alt='" . $row['nama_sayuran'] . "' />";
         echo "<div class='product-info'>";
@@ -111,7 +117,13 @@ $result = $conn->query($sql);
         echo "<p class='product-price'>" . $row['harga_sayuran'] . $row['satuan'] . "</p>";
         echo "<form class='add_to_cart' method='post' action='page/add_to_cart.php'>";
         echo "<input type='hidden' name='id_sayuran' value='" . $row['id_sayuran'] . "'>";
-        echo "<input type='submit' name='add_to_cart' value='Add to Cart'>";
+        if ($is_ordering) {
+          // Jika id_user ada di tabel cart_kwitansi
+          echo "<input type='text' value='Anda sedang melakukan pemesanan.' readonly>";
+          // Lakukan tindakan tambahan sesuai kebutuhan
+      } else {
+          echo "<input type='submit' name='add_to_cart' value='Add to Cart'>";
+      }
         echo "</form>";
         echo "</div>";
         echo "</div>";
@@ -132,12 +144,22 @@ $result = $conn->query($sql);
   </footer>
 
   <!-- JAVA -->
+  <script>
+    // Ambil semua tombol "Add to Cart"
+    var addToCartButtons = document.querySelectorAll('.add_to_cart input[type="submit"]');
 
+    // Tambahkan event listener untuk setiap tombol
+    addToCartButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        // Tampilkan alert
+        alert("Anda telah menambahkan sayuran ke dalam keranjang!");
+      });
+    });
+  </script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
-  <script src="script/script.js"></script>
   <script src="script/addTocart.js"></script>
 </body>
 
